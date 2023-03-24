@@ -1,0 +1,123 @@
+Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+Tue Nov 29 11:38:34 CST 2022 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+初始DB connection: size=1
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課代碼, 課程名稱, 類別, 開課班級, 必選修, 期程, 學分, 上課時間, 上課教室, 授課教師, 授課語言 FROM 課程清單 WHERE 學年期='109-1'
+釋放DB connection: size=1
+課程代碼=BA100A  課程資訊=學年期=109-1  課代碼=BA100A  課程名稱=資訊科技導論  類別=一般  開課班級=資管三乙  必選修=必修  期程=半  學分=3  上課時間=2-234  上課教室=教學202  授課教師=張  授課語言=國語
+課程代碼=CS681R  課程資訊=學年期=109-1  課代碼=CS681R  課程名稱=大數據智慧技術  類別=物  開課班級=基礎必修通識  必選修=通識  期程=半  學分=2  上課時間=5-12  上課教室=工學304三館  授課教師=李  授課語言=國語
+課程代碼=ES803L  課程資訊=學年期=109-1  課代碼=ES803L  課程名稱=數據庫應用基礎  類別=物  開課班級=延伸必修通識  必選修=通識  期程=半  學分=2  上課時間=5-56  上課教室=教學403  授課教師=李  授課語言=國語
+課程代碼=GR509A  課程資訊=學年期=109-1  課代碼=GR509A  課程名稱=飛盤  類別=體育  開課班級=體育興趣  必選修=必修  期程=半  學分=0  上課時間=2-56  上課教室=  授課教師=張  授課語言=國語
+課程代碼=GR507G  課程資訊=學年期=109-1  課代碼=GR507G  課程名稱=網球一  類別=體育  開課班級=體育興趣  必選修=必修  期程=半  學分=0  上課時間=3-DE  上課教室=  授課教師=陳  授課語言=國語
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 申請系編號, `種類(雙一/輔二)`, 申請學年期, 完成學年期, `修習狀態(放棄/取消/通過/修習)` FROM 兼修申請 where 學號=10844115
+釋放DB connection: size=1
+找出項目的相關課程:  項目編號=1011Z
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: select 課程編號 from 兼修相關課程 where 學年期='108-1' AND 項目名稱=(select 學程名稱 from 學程表單 where 學程代碼='1011Z');
+釋放DB connection: size=1
+相關課程: AC073K  index=0
+相關課程: ES791L  index=1
+相關課程: BA100A  index=2
+相關課程: ES803L  index=3
+相關課程: CS681R  index=4
+找出有修該項目的所有學生資料:  項目編號=1011Z
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT A.學號, A.完成學年期, A.`修習狀態(放棄/取消/通過/修習)`, B.姓名, B.興趣分類 FROM 學程申請 AS A LEFT JOIN 學生資料 AS B ON A.學號=B.學號 where 申請學年期='108-1' AND 申請學程代碼='1011Z'
+釋放DB connection: size=1
+學生進修資料: 學號=10843116  種類=3  進修項目代號=1011Z  申請日期=108-1  完成日期=null  學習狀態=修習
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課程代碼, 分數, 評分落點, 修習狀況, 評價 FROM 成績紀錄 WHERE 學號=10843116
+學生成績資料: 學號=10843116  學年期=108-1  課程代碼=AC073K  分數=60.0  評分落點=C-  學習狀態=P  評價=10
+學生成績資料: 學號=10843116  學年期=108-2  課程代碼=CS681R  分數=80.0  評分落點=B-  學習狀態=F  評價=8
+釋放DB connection: size=1
+學生進修資料: 學號=10843117  種類=3  進修項目代號=1011Z  申請日期=108-1  完成日期=null  學習狀態=通過
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課程代碼, 分數, 評分落點, 修習狀況, 評價 FROM 成績紀錄 WHERE 學號=10843117
+學生成績資料: 學號=10843117  學年期=108-2  課程代碼=AC073K  分數=61.0  評分落點=C-  學習狀態=P  評價=6
+學生成績資料: 學號=10843117  學年期=108-2  課程代碼=BA100A  分數=71.0  評分落點=B  學習狀態=P  評價=8
+學生成績資料: 學號=10843117  學年期=108-2  課程代碼=CS681R  分數=81.0  評分落點=B+  學習狀態=P  評價=5
+學生成績資料: 學號=10843117  學年期=108-2  課程代碼=ES803L  分數=91.0  評分落點=A-  學習狀態=P  評價=10
+釋放DB connection: size=1
+學生進修資料: 學號=10843118  種類=3  進修項目代號=1011Z  申請日期=108-1  完成日期=null  學習狀態=修習
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課程代碼, 分數, 評分落點, 修習狀況, 評價 FROM 成績紀錄 WHERE 學號=10843118
+學生成績資料: 學號=10843118  學年期=108-1  課程代碼=AC073K  分數=92.0  評分落點=A  學習狀態=P  評價=7
+學生成績資料: 學號=10843118  學年期=108-2  課程代碼=ES803L  分數=51.0  評分落點=D  學習狀態=F  評價=9
+釋放DB connection: size=1
+學生進修資料: 學號=10844111  種類=3  進修項目代號=1011Z  申請日期=108-1  完成日期=null  學習狀態=修習
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課程代碼, 分數, 評分落點, 修習狀況, 評價 FROM 成績紀錄 WHERE 學號=10844111
+學生成績資料: 學號=10844111  學年期=108-1  課程代碼=AC073K  分數=78.0  評分落點=B+  學習狀態=P  評價=8
+學生成績資料: 學號=10844111  學年期=108-1  課程代碼=BA100A  分數=90.0  評分落點=A  學習狀態=P  評價=6
+學生成績資料: 學號=10844111  學年期=108-2  課程代碼=CS681R  分數=89.0  評分落點=A-  學習狀態=P  評價=9
+釋放DB connection: size=1
+學生進修資料: 學號=10844114  種類=3  進修項目代號=1011Z  申請日期=108-1  完成日期=null  學習狀態=修習
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課程代碼, 分數, 評分落點, 修習狀況, 評價 FROM 成績紀錄 WHERE 學號=10844114
+學生成績資料: 學號=10844114  學年期=108-2  課程代碼=AC073K  分數=62.0  評分落點=C  學習狀態=P  評價=9
+學生成績資料: 學號=10844114  學年期=108-1  課程代碼=ES791L  分數=76.0  評分落點=B  學習狀態=P  評價=8
+釋放DB connection: size=1
+學生進修資料: 學號=10844115  種類=3  進修項目代號=1011Z  申請日期=108-1  完成日期=  學習狀態=修習
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課程代碼, 分數, 評分落點, 修習狀況, 評價 FROM 成績紀錄 WHERE 學號=10844115
+學生成績資料: 學號=10844115  學年期=108-1  課程代碼=AC073K  分數=96.0  評分落點=A+  學習狀態=P  評價=10
+釋放DB connection: size=1
+>>>進修項目: 1011Z
+學生課程矩陣: 學號: 10844115  矩陣: [true, false, false, false, false]
+學生課程矩陣: 學號: 10843116  矩陣: [true, false, false, false, true]
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課代碼, 課程名稱, 類別, 開課班級, 必選修, 期程, 學分, 上課時間, 上課教室, 授課教師, 授課語言 FROM 課程清單 WHERE 學年期='109-1'
+釋放DB connection: size=1
+學生課程矩陣: 學號: 10844115  矩陣: [true, false, false, false, false]
+學生課程矩陣: 學號: 10843117  矩陣: [true, false, true, true, true]
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課代碼, 課程名稱, 類別, 開課班級, 必選修, 期程, 學分, 上課時間, 上課教室, 授課教師, 授課語言 FROM 課程清單 WHERE 學年期='109-1'
+釋放DB connection: size=1
+學生課程矩陣: 學號: 10844115  矩陣: [true, false, false, false, false]
+學生課程矩陣: 學號: 10843118  矩陣: [true, false, false, true, false]
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課代碼, 課程名稱, 類別, 開課班級, 必選修, 期程, 學分, 上課時間, 上課教室, 授課教師, 授課語言 FROM 課程清單 WHERE 學年期='109-1'
+釋放DB connection: size=1
+學生課程矩陣: 學號: 10844115  矩陣: [true, false, false, false, false]
+學生課程矩陣: 學號: 10844111  矩陣: [true, false, true, false, true]
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課代碼, 課程名稱, 類別, 開課班級, 必選修, 期程, 學分, 上課時間, 上課教室, 授課教師, 授課語言 FROM 課程清單 WHERE 學年期='109-1'
+釋放DB connection: size=1
+學生課程矩陣: 學號: 10844115  矩陣: [true, false, false, false, false]
+學生課程矩陣: 學號: 10844114  矩陣: [true, true, false, false, false]
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課代碼, 課程名稱, 類別, 開課班級, 必選修, 期程, 學分, 上課時間, 上課教室, 授課教師, 授課語言 FROM 課程清單 WHERE 學年期='109-1'
+釋放DB connection: size=1
+跳過有修但未開的課: 學號=10844114  課程=ES791L
+排序:
+學號: 10843116  Jaccard相似度: 0.5
+學號: 10843118  Jaccard相似度: 0.5
+學號: 10844111  Jaccard相似度: 0.33333334
+學號: 10843117  Jaccard相似度: 0.25
+依相似度推薦課程:
+1. CS681R
+2. ES803L
+3. BA100A
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課代碼, 課程名稱, 類別, 開課班級, 必選修, 期程, 學分, 上課時間, 上課教室, 授課教師, 授課語言 FROM 課程清單 WHERE 學年期='109-1'
+釋放DB connection: size=1
+跳過未開的課程: 課程=ES791L
+課程通過率: 課程=BA100A  通過率=100.0
+課程通過率: 課程=ES803L  通過率=50.0
+課程通過率: 課程=CS681R  通過率=66.66667
+依通過率推薦課程:
+1. BA100A
+2. CS681R
+3. ES803L
+取得DB connection.
+SQL=com.mysql.cj.jdbc.CallableStatement: SELECT 學年期, 課代碼, 課程名稱, 類別, 開課班級, 必選修, 期程, 學分, 上課時間, 上課教室, 授課教師, 授課語言 FROM 課程清單 WHERE 學年期='109-1'
+釋放DB connection: size=1
+跳過未開的課程: 課程=ES791L
+課程評價值: 課程=BA100A  評價=7.0
+課程評價值: 課程=ES803L  評價=9.5
+課程評價值: 課程=CS681R  評價=7.3333335
+依通過率推薦課程:
+1. ES803L
+2. CS681R
+3. BA100A

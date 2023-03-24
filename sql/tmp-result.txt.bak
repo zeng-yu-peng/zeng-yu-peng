@@ -1,0 +1,33 @@
+相關課程: AC073K  idx=0
+相關課程: BA100A  idx=1
+相關課程: ES803L  idx=2
+相關課程: CS681R  idx=3
+
+
+財務報表分析		AC073K  
+資訊科技導論		BA100A
+大數據智慧技術	CS681R
+數據庫應用基礎	ES803L
+
+
+USER: 41 學生進修資料: 學號=10844115  種類=3  進修項目代號=1011Z  申請日期=108-1  完成日期=  學習狀態=修習
+19 學生進修資料: 學號=10843117  種類=3  進修項目代號=1011Z  申請日期=108-1  完成日期=null  學習狀態=通過
+32 學生進修資料: 學號=10843118  種類=3  進修項目代號=1011Z  申請日期=108-1  完成日期=null  學習狀態=修習
+48 學生進修資料: 學號=10943116  種類=3  進修項目代號=1011Z  申請日期=108-1  完成日期=null  學習狀態=修習
+57 學生進修資料: 學號=10944111  種類=3  進修項目代號=1011Z  申請日期=108-1  完成日期=null  學習狀態=修習
+68 學生進修資料: 學號=10944114  種類=3  進修項目代號=1011Z  申請日期=108-1  完成日期=null  學習狀態=修習
+
+
+USER: 47 TEMP>>>>=10844115  ary=[true, false, false, false]
+31 TEMP>>>>=10843117  ary=[true, true, true, true]
+40 TEMP>>>>=10843118  ary=[true, false, true, false]
+56 TEMP>>>>=10943116  ary=[true, false, false, true]
+67 TEMP>>>>=10944111  ary=[true, true, false, true]
+76 TEMP>>>>=10944114  ary=[true, true, false, false]
+
+
+Jaccard similarity: 0.25
+Jaccard similarity: 0.5
+Jaccard similarity: 0.5
+Jaccard similarity: 0.33333334
+Jaccard similarity: 0.5
